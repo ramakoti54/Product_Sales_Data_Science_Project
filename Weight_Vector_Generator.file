@@ -1,0 +1,23 @@
+******* Generating a sequence of numbers with each pair of adjacent data values must represent with 1 and 0.5 respectively. The series should starts with a value of 1 and continue until it reaches a total of 45 pairs to hold all of them in a list data type.  *********
+
+******* [1,0.5,1,0.5,1,0.5 ... 1,0.5] ************
+
+Algorithm:
+
+1. Write a class Even_Odd_Number_Generator as the name to support standard oops structure.
+2. The class has only method called Even_Odd_Gen to generate a sequence with 45 pairs in a list data type.
+3. Declare all the variables for supporting the sequence must be at outside of the class like
+   random_generator to contain data values of generated list.
+   integer value to add series numbers either 1 or 0.5 to list .
+   counter value to manage list through index.
+   last number in sequence to store the length of sequence.
+4. apply logic by looking for a condition with length of counter doesn't exceed last number in sequence or length of sequence 90 in this case.
+5. Main logic is to look for the counter value if above condition is valid look for even or odd by computing remainder and if it is divisible by the number 2 make a new adddition to the list with data value 1 otherwise append list with 0.5.
+6. Raise the counter in the next step and repeat same steps for if else conditional statement and return the random_generator sequence list to the called function.
+7. Create an object to the class for calling methods from the object. It works to operate the functionality at multiple classes in a distinct functional program to use it with runtime polymorphism support.
+
+Sample Input: starting_index = 0, length_of_sequence = 90;
+[1,0.5,1,0.5 ..... repeat till 90 times to end the series as 1,0.5]
+
+There had been three input values to enter during program compilation and run time including length of sequence to compute, i and j to store weight vectors with length of series +1. 
+The extra data value from these weight vectors associated to represent the bias of the function.
