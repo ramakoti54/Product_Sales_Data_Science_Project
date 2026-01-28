@@ -1,3 +1,6 @@
+******* # The file is in progress to build for Future reference Follow the process changes are required to update dynamic components. If needed to execute and compile contact me on my email or Github commentary. Strictly prohibited for external
+        usecases unless it is verified and modified by the Senior Developers and Architect reviews.  *********
+
 ******* Generating a sequence of numbers with each pair of adjacent data values must represent with 1 and 0.5 respectively. The series should starts with a value of 1 and continue until it reaches a total of 45 pairs to hold all of them in a list data type.  *********
 
 ******* [1,0.5,1,0.5,1,0.5 ... 1,0.5] ************
