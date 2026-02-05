@@ -6,15 +6,18 @@ import Even_Odd_Random_Number_Generator as eong;
 import math;
 
 class Regional_Promotion_Impact:
-   def Region_Clothing_Sales(self,Product_Sales_File,Product_Sales_List,Product_Price_List,Product_Cost_List,Product_Sales_Argentina,Product_Sales_Bangladesh,Product_Sales_Brazil,Product_Sales_Cambodia,Product_Sales_China,Product_Sales_India,Product_Sales_Morocco,Product_Sales_Pakistan,Product_Sales_Portugal,Product_Sales_Spain,Product_Sales_Turkey,Product_Sales_Vietnam,Product_Price_Argentina,Product_Price_Bangladesh,Product_Price_Brazil,Product_Price_Cambodia,Product_Price_China,Product_Price_India,Product_Price_Morocco,Product_Price_Pakistan,Product_Price_Portugal,Product_Price_Spain,Product_Price_Turkey,Product_Price_Vietnam,Product_Cost_Argentina,Product_Cost_Bangladesh,Product_Cost_Brazil,Product_Cost_Cambodia,Product_Cost_China,Product_Cost_India,Product_Cost_Morocco,Product_Cost_Pakistan,Product_Cost_Portugal,Product_Cost_Spain,Product_Cost_Turkey,Product_Cost_Vietnam,i):   
+
+  def Region_Clothing_Sales(self,Product_Sales_File,Product_Sales_List,Product_Price_List,Product_Cost_List,Product_Sales_Argentina,Product_Sales_Bangladesh,Product_Sales_Brazil,Product_Sales_Cambodia,Product_Sales_China,Product_Sales_India,Product_Sales_Morocco,Product_Sales_Pakistan,Product_Sales_Portugal,Product_Sales_Spain,Product_Sales_Turkey,Product_Sales_Vietnam,Product_Price_Argentina,Product_Price_Bangladesh,Product_Price_Brazil,Product_Price_Cambodia,Product_Price_China,Product_Price_India,Product_Price_Morocco,Product_Price_Pakistan,Product_Price_Portugal,Product_Price_Spain,Product_Price_Turkey,Product_Price_Vietnam,Product_Cost_Argentina,Product_Cost_Bangladesh,Product_Cost_Brazil,Product_Cost_Cambodia,Product_Cost_China,Product_Cost_India,Product_Cost_Morocco,Product_Cost_Pakistan,Product_Cost_Portugal,Product_Cost_Spain,Product_Cost_Turkey,Product_Cost_Vietnam,i):   
       Product_ID = Product_Sales_File[0];
       Product_Promotion = Product_Sales_File[4];
       Product_Sales_Volume = Product_Sales_File[8];
       Product_Price = Product_Sales_File[10];
       Product_Origin = Product_Sales_File[15];
+      #print(len(Product_Sales_Volume))
 
       Product_Cost_List = ABR.Analyse_Business_Revenue().Adjust_Product_Price(Product_Price,Product_Sales_Volume,Product_ID,i,Product_Cost_List);
       #ABR.__init__().Adjust_Product_Price(Product_Price,Product_Sales_Volume,Product_ID,i,Product_Cost_List);
+
       for i in range(len(Product_ID)):
          if(i < len(Product_ID) and Product_Origin[i] == 'Argentina' and Product_Promotion[i] == 'Yes'):
             Product_Sales_Argentina.append(Product_Sales_Volume[i]);
@@ -65,6 +68,7 @@ class Regional_Promotion_Impact:
             Product_Cost_Vietnam.append(Product_Cost_List[i]);
             Product_Price_Vietnam.append(Product_Price[i]);
          elif(i == len(Product_ID)):
+
             print("Sales, Price and Cost List are computed and returned in the function.");
             break;
       #print(Product_Sales_Spain,"\n",Product_Cost_Spain,"\n",Product_Price_Spain);      
@@ -74,6 +78,16 @@ class Regional_Promotion_Impact:
       return([Product_Sales_List,Product_Price_List,Product_Cost_List]);
 
    def Scatter_Plot_Sales_Price_Cost(self,Sales_List_Name,Price_List_Name,Cost_List_Name):
+
+            break;
+      #print(Product_Sales_Spain,"\n",Product_Cost_Spain,"\n",Product_Price_Spain);      
+      Product_Sales_List = [Product_Sales_Argentina,Product_Sales_Bangladesh,Product_Sales_Brazil,Product_Sales_Cambodia,Product_Sales_China,Product_Sales_India,Product_Sales_Morocco,Product_Sales_Pakistan,Product_Sales_Portugal,Product_Sales_Spain,Product_Sales_Turkey,Product_Sales_Vietnam]; 
+      Product_Cost_List =  [Product_Cost_Argentina,Product_Cost_Bangladesh,Product_Cost_Brazil,Product_Cost_Cambodia,Product_Cost_China,Product_Cost_India,Product_Cost_Morocco,Product_Cost_Pakistan,Product_Cost_Portugal,Product_Cost_Spain,Product_Cost_Turkey,Product_Cost_Vietnam];
+      Product_Price_List = [Product_Price_Argentina,Product_Price_Bangladesh,Product_Price_Brazil,Product_Price_Cambodia,Product_Price_China,Product_Price_India,Product_Price_Morocco,Product_Price_Pakistan,Product_Price_Portugal,Product_Price_Spain,Product_Price_Turkey,Product_Price_Vietnam];
+      return([Product_Sales_List,Product_Price_List,Product_Cost_List]);
+
+   def Scatter_Plot_Sales_Price_Cost(Sales_List_Name,Price_List_Name,Cost_List_Name):
+    
       plt.style.use('_mpl-gallery-nogrid')
       # make data
       x = Sales_List_Name;#Product_Section_Output; #[1, 2, 3, 4]
@@ -102,6 +116,8 @@ class Regional_Promotion_Impact:
       return(None);
 
    def __init__(self):
+
+
       Product_Sales = pd.read_csv('/content/Product_Sales/Business_sales_EDA.csv', delimiter = ';');
       Product_ID = Product_Sales['Product ID'];
       Product_Name = Product_Sales['name'];
@@ -120,6 +136,7 @@ class Regional_Promotion_Impact:
       Product_Material = Product_Sales['material'];
       Product_Origin = Product_Sales['origin'];
       Product_Brand = Product_Sales['brand'];
+
       Product_Sales_File = [Product_ID,Product_Name,Product_Description,Product_Terms,Product_Promotion,Product_Position,Product_URL,Product_Category,Product_Sales_Volume,Product_Section,Product_Price,Product_Seasonal,Product_Season,Product_Currency,Product_Material,Product_Origin,Product_Brand];
       Product_Sales_List = [];
       Product_Cost_List =[];
@@ -276,5 +293,4 @@ class Regional_Promotion_Impact:
       else:
          print("The above Diagram illustrates the Regression behaviour between Sales, Revenue and Price of Products.");
       return(None);
-      
 Region_Promotion_Imp = Regional_Promotion_Impact();
