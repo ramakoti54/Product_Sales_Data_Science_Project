@@ -3,7 +3,7 @@ import pandas as pd;
 import matplotlib.pyplot as pyplt;
 import math;
 #import Even_Odd_Random_Number_Generator as eong;
-#import Analyse_Business_Revenue as ABR;
+import Analyse_Business_Revenue as ABR;
 import Dynamic_Variable_Generator as DVG;
 
 class Business_Sales_Price_Revenue_Report:
@@ -440,7 +440,11 @@ class Business_Sales_Price_Revenue_Report:
    
    def Compute_Revenue(Net_Sales,Net_Revenue,Gross_Revenue):
       Gross_Revenue = np.sum(Net_Revenue);
-      return([np.sum(Net_Sales),Gross_Revenue])   
+      return([np.sum(Net_Sales),Gross_Revenue]);
+   #def Scatterplot(Product_Sales_List,Product_Cost_List,Gross_Revenue):
+      
+
+   #   return(None);   
          
    def __init__(self):
       Product_Sales = pd.read_csv('/content/Product_Sales/Business_sales_EDA.csv', delimiter = ';');
@@ -602,12 +606,12 @@ class Business_Sales_Price_Revenue_Report:
       Net_Sales, Gross_Revenue = self.Compute_Revenue(Sales,Net_Revenue,Gross_Revenue);
       #self.Scatter_plot(Net_Sales,Gross_Revenue);
       print("Total Sales volume for f'{Sales} value is: ",Net_Sales,"\n Gross Revenue for the Fiscal year 2024 for given conditional sales volume stands at $",Gross_Revenue);
+      ABR.__init__().self.Pie_Chart_Visuals(self,Product_Sales_List,Product_Cost_List);
       #Dynamic_Variables_List = [];
       #Dynamic_Variables_List = DVG.Dynamic_Variable_Generator();
       #print(type(Dynamic_Variables_List))
       #for i in Dynamic_Variables_List:
-      #   print(Dynamicariables_List[-1]);
-      
+      #print(Dynamicariables_List[-1]);
       #list(Dynamic_Variables_List.ID());
       #print(Dynamic_Variables_List);
       #for i in range(120):
