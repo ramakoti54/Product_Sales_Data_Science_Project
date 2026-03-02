@@ -4,6 +4,10 @@ import matplotlib.pyplot as plt
 import math;
 import Sequential_Number_Generation as SNG;
 import Rectified_Linear_Unit_API as RLU_API;
+#from google.colab import drive;
+#from google.colab import auth;
+
+#drive_path = drive.mount('https://docs.google.com/spreadsheets/d/1Y_xTNUN1MRj7TjwEPBithwumMfwiCWItRxCTDd89UNE/edit?usp=drive_link);
 
 class Optimize_Prediction:
    
@@ -18,8 +22,28 @@ class Optimize_Prediction:
       return(entropy);
 
    def Input_Prediction(X):
-      X.append(for i in range(len(X)));
-      return(X)   
+      for i in range(len(X)):
+         if(condition_1_rating > 5 and condition_1_rating <=6):
+            X.append(X[i]+ Inflation_rate_update_Input*X[i]);
+         elif(condition_2_rating >4 and condition_2_rating <=5):
+            X.append(X[i]+ Intrest_rate_Change_Input*X[i]);
+         elif(condition_3_rating <=4 and condition_3_rating >3):
+            X.append(X[i]+ Tarrif_updates * X[i]);
+         elif(condition_4_rating <3 and condition_4_rating >=2):
+            X.append(X[i]+ Unemployment_Rate_Input * X[i]):
+         elif(condition_5_rating <2 and condition_5_rating >=1):
+            X.append(X[i]+ Quarterly_results_Input * X[i]):
+         elif(condition_6_rating <1 and condition_6_rating >= 0):
+            X.append(X[i]+ Yearly_results_Input * X[i]);
+         elif(condition_7_rating >6 and condition_7_rating <=7):
+            X.append(X[i]+ Social_Economic_Factors * X[i]);
+         elif(condition_8_rating >7 and condition_8_rating <= 8):
+            X.append(X[i]+ Other_factors_input * X[i]);
+         elif(condition_9_rating >8 and condition_9_rating <=9):
+            X.append(X[i]+ Intraday_rating_Input * X[i]);             
+         else:
+            X.append(X[i]);
+      return(X);   
 
    def Optimize_Prediction(self,X,W,Y,i,maximum_iterations):
       k = 0;
@@ -52,6 +76,7 @@ class Optimize_Prediction:
       Dynamic_Number = 10000;
       Data_Price = float(Data_Open + Data_Close + Data_Low + Data_High + Data_Adj_Close)/5.0;
       X = Data_Price[:10000];
+      Inference_Dataset = Data_Price[9748:10000];
       Y = Data_Price[10001:];
       W = SNG.Sequential_Number_Generation().SNO_Generation(X,i,Dynamic_Number);      
       Y = [];
